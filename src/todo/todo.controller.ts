@@ -14,7 +14,7 @@ export class TodoController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post()
-  @ApiOperation({ summary: 'Create a new todo item' })
+  @ApiOperation({ summary: 'Add a new task' })
   create(@Body() createTodoDto: CreateTodoDto, @UserEmail() userEmail: string) {
     return this.todoService.create(createTodoDto, userEmail);
   }
@@ -22,7 +22,7 @@ export class TodoController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get()
-  @ApiOperation({ summary: 'Get all todo items for the authenticated user' })
+  @ApiOperation({ summary: 'To get all the user tasks' })
   findAll(@UserEmail() userEmail: string) {
     return this.todoService.findAll(userEmail);
   }
@@ -30,7 +30,7 @@ export class TodoController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get(':id')
-  @ApiOperation({ summary: 'Get a specific todo item by its ID' })
+  @ApiOperation({ summary: 'To get a specific user task' })
   findOne(@Param('id') id: string) {
     return this.todoService.findOne(+id);
   }
@@ -38,7 +38,7 @@ export class TodoController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Patch(':id')
-  @ApiOperation({ summary: 'Update a specific todo item by its ID' })
+  @ApiOperation({ summary: 'To update a specific user task' })
   update(@Param('id') id: string, @Body() updateTodoDto: UpdateTodoDto) {
     return this.todoService.update(+id, updateTodoDto);
   }
@@ -46,7 +46,7 @@ export class TodoController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
-  @ApiOperation({ summary: 'Delete a specific todo item by its ID' })
+  @ApiOperation({ summary: 'To delete a specific user task' })
   remove(@Param('id') id: string) {
     return this.todoService.remove(+id);
   }

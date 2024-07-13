@@ -9,7 +9,7 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Post()
+  @Post('/register')
   @ApiOperation({description: 'To register a new user with email', summary: 'Register a user with details'})
   create(@Body() registerDTO: RegisterDTO) {
     return this.authService.register(registerDTO);
